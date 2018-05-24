@@ -1,0 +1,31 @@
+import pc.inter.*;
+import java.util.Scanner;
+import pc.inter.Buffer;
+
+public class Consumidor extends Thread{
+	int n;
+	Buffer b;
+	int num;
+	
+	public Consumidor(Buffer b){
+		this.b=b;
+	}
+	
+	public void run(){
+		while(n!=-1){
+			num = b.getValor();
+			if(num == -1){
+				System.out.println("Fin");
+			}
+			else{
+				int fact = 1;
+				for(int i=1; i<=num; i++){
+					fact = fact * i;
+				}
+				
+				System.out.println("[Consumidor]" +"\n" + "El factorial es: " +fact);
+			}
+		}
+	}
+
+}
