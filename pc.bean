@@ -1,0 +1,21 @@
+import pc.inter.Buffer;
+
+public class Memoria implements Buffer{
+	private int n;
+	
+	public synchronized void setValor(int n){
+		this.n=n;
+		notifyAll();
+	}
+	
+	public synchronized int getValor(){
+		try{
+			wait();
+		} catch (InterruptedException e){
+			e.printStackTrace();
+		}
+		
+		return n;
+	}
+
+}
